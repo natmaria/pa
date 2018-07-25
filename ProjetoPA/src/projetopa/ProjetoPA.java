@@ -22,7 +22,7 @@ public class ProjetoPA {
         Conta nmp = new Conta();
         nmp.setName("Natállia");
         nmp.setConta(1000);
-        nmp.setSaldo(1500.00);
+        nmp.setSaldo(2500.00);
         System.out.println(nmp.toString());
         
         Conta rp = new Conta();

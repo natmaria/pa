@@ -36,7 +36,7 @@ public Double getSaldo() {
 }
 
 public String toString() {
-    return "Nome: " + getName() + "\n" +
+    return "Nome do dono: " + getName() + "\n" +
             "Nº da Conta: " + getConta() +"\n" +
             "Saldo: " + getSaldo() + "\n" + "----";
 }
