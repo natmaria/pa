@@ -23,29 +23,33 @@ public class ProjetoPA {
         nmp.setName("Natállia");
         nmp.setConta(1000);
         nmp.setSaldo(2500.00);
+        nmp.setLimite(3800.00);
         System.out.println(nmp.toString());
         
         Conta rp = new Conta();
         rp.setName("Rodrigo");
         rp.setConta(2000);
         rp.setSaldo(5000.00);
+        rp.setLimite(5500.00);
         System.out.println(rp.toString());
         
         System.out.println("Transferência R$1000 de RP para NMP: ");
         transferencia(1000d, rp, nmp);
-        System.out.println(nmp.toString());
-        System.out.println(rp.toString());
     }
 
     private static void transferencia(double valor, Conta origem, Conta destino) {
         try{
+            if ((origem.getSaldo() - valor) <=0 || 
+                    (destino.getSaldo() + valor) > destino.getLimite()) {
+            System.out.println("Não é possível realizar a transferência");    
+            } else {
             origem.debito(valor);
             destino.credito(valor);
-            
+            System.out.println(destino.toString());
+            System.out.println(origem.toString());
+            }
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
-
     }
-    
 }
