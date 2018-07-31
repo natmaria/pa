@@ -31,7 +31,7 @@ public class ProjetoPA {
         rp.setConta(2000);
         rp.setSaldo(5000.00);
         rp.setLimite(5500.00);
-        System.out.println(rp.toString());
+        System.out.println("Conta RP" + rp.toString());
         
         System.out.println("Transferência R$1000 de RP para NMP: ");
         transferencia(1000d, rp, nmp);
