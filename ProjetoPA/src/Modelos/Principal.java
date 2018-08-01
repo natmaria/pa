@@ -16,6 +16,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setResizable(false);
+        buttonGroup.add(rbtnClasse1);
+        buttonGroup.add(rbtnClasse2);
+        buttonGroup.add(rbtnClasse3);
     }
 
     /**
@@ -27,42 +31,63 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup = new javax.swing.ButtonGroup();
         lblAlunos = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
+        rbtnClasse1 = new javax.swing.JRadioButton();
+        rbtnClasse2 = new javax.swing.JRadioButton();
+        rbtnClasse3 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblAlunos.setText("Alunos");
+        lblAlunos.setText("Selecione o personagem:");
 
-        btnIniciar.setText("Iniciar");
+        btnIniciar.setText("Avançar");
 
         btnSair.setText("Sair");
+
+        rbtnClasse1.setText("jRadioButton1");
+
+        rbtnClasse2.setText("jRadioButton2");
+
+        rbtnClasse3.setText("jRadioButton3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(btnSair)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addComponent(btnIniciar)
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAlunos)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnIniciar)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnSair)))
-                .addContainerGap(239, Short.MAX_VALUE))
+                    .addComponent(rbtnClasse3)
+                    .addComponent(rbtnClasse2)
+                    .addComponent(rbtnClasse1)
+                    .addComponent(lblAlunos))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAlunos)
-                .addGap(31, 31, 31)
+                .addGap(50, 50, 50)
+                .addComponent(rbtnClasse1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbtnClasse2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbtnClasse3)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIniciar)
                     .addComponent(btnSair))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -106,6 +131,10 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnSair;
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel lblAlunos;
+    private javax.swing.JRadioButton rbtnClasse1;
+    private javax.swing.JRadioButton rbtnClasse2;
+    private javax.swing.JRadioButton rbtnClasse3;
     // End of variables declaration//GEN-END:variables
 }
