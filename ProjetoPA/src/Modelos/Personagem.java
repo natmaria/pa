@@ -11,4 +11,10 @@ package Modelos;
  */
 public class Personagem {
     
+   private String nome;
+   private String classe;
+   private int nivel;
+   private int vida;
+   private int ataque;
+    
 }
