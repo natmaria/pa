@@ -5,6 +5,8 @@
  */
 package Modelos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author robsom.mathei
@@ -20,6 +22,7 @@ public class Principal extends javax.swing.JFrame {
         buttonGroup.add(rbtnClasse1);
         buttonGroup.add(rbtnClasse2);
         buttonGroup.add(rbtnClasse3);
+        rbtnClasse1.setSelected(true);
     }
 
     /**
@@ -32,66 +35,178 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup = new javax.swing.ButtonGroup();
-        lblAlunos = new javax.swing.JLabel();
+        lblSelPersonagem = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         rbtnClasse1 = new javax.swing.JRadioButton();
         rbtnClasse2 = new javax.swing.JRadioButton();
         rbtnClasse3 = new javax.swing.JRadioButton();
+        lblNome = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        lblOdaAtaque = new javax.swing.JLabel();
+        lblOdaVida = new javax.swing.JLabel();
+        lblMakoAtaque = new javax.swing.JLabel();
+        lblMakoVida = new javax.swing.JLabel();
+        lblTritanAtaque = new javax.swing.JLabel();
+        lblTritanVida = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        lblAlunos.setText("Selecione o personagem:");
+        lblSelPersonagem.setText("Selecione o personagem:");
 
+        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-check.png"))); // NOI18N
         btnIniciar.setText("Avançar");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
 
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-error.png"))); // NOI18N
         btnSair.setText("Sair");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
 
-        rbtnClasse1.setText("jRadioButton1");
+        rbtnClasse1.setText("ODA");
 
-        rbtnClasse2.setText("jRadioButton2");
+        rbtnClasse2.setText("MAKO");
+        rbtnClasse2.setToolTipText("");
 
-        rbtnClasse3.setText("jRadioButton3");
+        rbtnClasse3.setText("TRITAN");
+
+        lblNome.setText("Digite o nome do personagem:");
+
+        lblOdaAtaque.setText("Ataque: 50");
+
+        lblOdaVida.setText("Vida: 100");
+
+        lblMakoAtaque.setText("Ataque: 70");
+
+        lblMakoVida.setText("Vida: 80");
+
+        lblTritanAtaque.setText("Ataque: 80");
+
+        lblTritanVida.setText("Vida: 70");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnSair)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
-                .addComponent(btnIniciar)
-                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnClasse3)
                     .addComponent(rbtnClasse2)
-                    .addComponent(rbtnClasse1)
-                    .addComponent(lblAlunos))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(btnSair)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnIniciar))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSelPersonagem)
+                                .addComponent(rbtnClasse1))
+                            .addGap(104, 104, 104)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNome))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblOdaAtaque)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblOdaVida))
+                    .addComponent(rbtnClasse3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMakoAtaque)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMakoVida))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTritanAtaque)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTritanVida)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblAlunos)
-                .addGap(50, 50, 50)
-                .addComponent(rbtnClasse1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnClasse2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtnClasse3)
-                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIniciar)
-                    .addComponent(btnSair))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addComponent(lblSelPersonagem)
+                    .addComponent(lblNome))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtnClasse1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOdaAtaque)
+                    .addComponent(lblOdaVida))
+                .addGap(9, 9, 9)
+                .addComponent(rbtnClasse2)
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMakoAtaque)
+                    .addComponent(lblMakoVida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rbtnClasse3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTritanAtaque)
+                    .addComponent(lblTritanVida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSair)
+                    .addComponent(btnIniciar))
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        // TODO add your handling code here:
+        int classe;
+        if (validarCampos() == false) {
+            JOptionPane.showMessageDialog(this, "Preencha o nome do personagem!");
+        } else {
+        if (rbtnClasse1.isSelected()) {
+            Personagem oda = new Personagem();
+            oda.setNome(txtNome.getText());
+            oda.setClasse("Oda");
+            oda.setNivel(1);
+            oda.setAtaque(50);
+            oda.setVida(100);
+            JOptionPane.showMessageDialog(this, oda.toString());
+        }
+        if (rbtnClasse2.isSelected()) {
+            Personagem mako = new Personagem();
+            mako.setNome(txtNome.getText());
+            mako.setClasse("Mako");
+            mako.setNivel(1);
+            mako.setAtaque(70);
+            mako.setVida(80); 
+            JOptionPane.showMessageDialog(this, mako.toString());
+        }
+        if (rbtnClasse3.isSelected()) {
+            Personagem tritan = new Personagem();
+            tritan.setNome(txtNome.getText());
+            tritan.setClasse("Mako");
+            tritan.setNivel(1);
+            tritan.setAtaque(80);
+            tritan.setVida(70);
+            JOptionPane.showMessageDialog(this, tritan.toString());
+        }
+     }   
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,14 +242,31 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
+    
+    public boolean validarCampos() {
+        if (txtNome.getText().length() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnSair;
     private javax.swing.ButtonGroup buttonGroup;
-    private javax.swing.JLabel lblAlunos;
+    private javax.swing.JLabel lblMakoAtaque;
+    private javax.swing.JLabel lblMakoVida;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblOdaAtaque;
+    private javax.swing.JLabel lblOdaVida;
+    private javax.swing.JLabel lblSelPersonagem;
+    private javax.swing.JLabel lblTritanAtaque;
+    private javax.swing.JLabel lblTritanVida;
     private javax.swing.JRadioButton rbtnClasse1;
     private javax.swing.JRadioButton rbtnClasse2;
     private javax.swing.JRadioButton rbtnClasse3;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
