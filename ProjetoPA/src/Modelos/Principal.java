@@ -50,8 +50,6 @@ public class Principal extends javax.swing.JFrame {
         lblTritanAtaque = new javax.swing.JLabel();
         lblTritanVida = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-
         lblSelPersonagem.setText("Selecione o personagem:");
 
         btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-check.png"))); // NOI18N
@@ -185,7 +183,9 @@ public class Principal extends javax.swing.JFrame {
             oda.setNivel(1);
             oda.setAtaque(50);
             oda.setVida(100);
-            JOptionPane.showMessageDialog(this, oda.toString());
+            Detalhes tela = new Detalhes(oda,Principal.this);
+            tela.setModal(true);
+            tela.setVisible(true);
         }
         if (rbtnClasse2.isSelected()) {
             Personagem mako = new Personagem();
@@ -194,54 +194,26 @@ public class Principal extends javax.swing.JFrame {
             mako.setNivel(1);
             mako.setAtaque(70);
             mako.setVida(80); 
-            JOptionPane.showMessageDialog(this, mako.toString());
-        }
+            Detalhes tela = new Detalhes(mako,Principal.this);
+            tela.setModal(true);
+            tela.setVisible(true);
+            }
         if (rbtnClasse3.isSelected()) {
             Personagem tritan = new Personagem();
             tritan.setNome(txtNome.getText());
-            tritan.setClasse("Mako");
+            tritan.setClasse("Tritan");
             tritan.setNivel(1);
             tritan.setAtaque(80);
             tritan.setVida(70);
-            JOptionPane.showMessageDialog(this, tritan.toString());
+            Detalhes tela = new Detalhes(tritan,Principal.this);
+            tela.setModal(true);
+            tela.setVisible(true);
         }
-     }   
+     
+        }   
+        
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Principal().setVisible(true);
-            }
-        });
-    }
     
     public boolean validarCampos() {
         if (txtNome.getText().length() == 0) {
