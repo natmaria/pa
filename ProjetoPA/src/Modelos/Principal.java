@@ -36,7 +36,7 @@ public class Principal extends javax.swing.JFrame {
 
         buttonGroup = new javax.swing.ButtonGroup();
         lblSelPersonagem = new javax.swing.JLabel();
-        btnIniciar = new javax.swing.JButton();
+        btnAvançar = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         rbtnClasse1 = new javax.swing.JRadioButton();
         rbtnClasse2 = new javax.swing.JRadioButton();
@@ -52,11 +52,11 @@ public class Principal extends javax.swing.JFrame {
 
         lblSelPersonagem.setText("Selecione o personagem:");
 
-        btnIniciar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-check.png"))); // NOI18N
-        btnIniciar.setText("Avançar");
-        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+        btnAvançar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-check.png"))); // NOI18N
+        btnAvançar.setText("Avançar");
+        btnAvançar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarActionPerformed(evt);
+                btnAvançarActionPerformed(evt);
             }
         });
 
@@ -101,7 +101,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(btnSair)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnIniciar))
+                            .addComponent(btnAvançar))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblSelPersonagem)
@@ -158,7 +158,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
-                    .addComponent(btnIniciar))
+                    .addComponent(btnAvançar))
                 .addGap(35, 35, 35))
         );
 
@@ -170,49 +170,19 @@ public class Principal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+    private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
         // TODO add your handling code here:
-        int classe;
+   
         if (validarCampos() == false) {
             JOptionPane.showMessageDialog(this, "Preencha o nome do personagem!");
         } else {
-        if (rbtnClasse1.isSelected()) {
-            Personagem oda = new Personagem();
-            oda.setNome(txtNome.getText());
-            oda.setClasse("Oda");
-            oda.setNivel(1);
-            oda.setAtaque(50);
-            oda.setVida(100);
-            Detalhes tela = new Detalhes(oda,Principal.this);
-            tela.setModal(true);
-            tela.setVisible(true);
-        }
-        if (rbtnClasse2.isSelected()) {
-            Personagem mako = new Personagem();
-            mako.setNome(txtNome.getText());
-            mako.setClasse("Mako");
-            mako.setNivel(1);
-            mako.setAtaque(70);
-            mako.setVida(80); 
-            Detalhes tela = new Detalhes(mako,Principal.this);
-            tela.setModal(true);
-            tela.setVisible(true);
-            }
-        if (rbtnClasse3.isSelected()) {
-            Personagem tritan = new Personagem();
-            tritan.setNome(txtNome.getText());
-            tritan.setClasse("Tritan");
-            tritan.setNivel(1);
-            tritan.setAtaque(80);
-            tritan.setVida(70);
-            Detalhes tela = new Detalhes(tritan,Principal.this);
-            tela.setModal(true);
-            tela.setVisible(true);
-        }
-     
+        Personagem personagemClasse = escolherPersonagem();
+        DetalhesPersonagem tela = new DetalhesPersonagem(personagemClasse,Principal.this);
+        tela.setModal(true);
+        tela.setVisible(true);
         }   
         
-    }//GEN-LAST:event_btnIniciarActionPerformed
+    }//GEN-LAST:event_btnAvançarActionPerformed
 
     
     public boolean validarCampos() {
@@ -220,12 +190,42 @@ public class Principal extends javax.swing.JFrame {
             return false;
         } else {
             return true;
-        }
+        }  
+    }
+    
+    private Personagem escolherPersonagem() {
+       try {
+           Personagem personagem = new Personagem();
+           if (rbtnClasse1.isSelected()) {
+            personagem.setNome(txtNome.getText());
+            personagem.setClasse("Oda");
+            personagem.setNivel(1);
+            personagem.setAtaque(50);
+            personagem.setVida(100);
+        } 
+        if (rbtnClasse2.isSelected()) {
+            personagem.setNome(txtNome.getText());
+            personagem.setClasse("Mako");
+            personagem.setNivel(1);
+            personagem.setAtaque(70);
+            personagem.setVida(80);
+            } 
         
+        if (rbtnClasse3.isSelected()) {
+            personagem.setNome(txtNome.getText());
+            personagem.setClasse("Tritan");
+            personagem.setNivel(1);
+            personagem.setAtaque(80);
+            personagem.setVida(70);
+        }
+        return personagem;
+       } catch (Exception e) {
+        return null;
+    }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnAvançar;
     private javax.swing.JButton btnSair;
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel lblMakoAtaque;

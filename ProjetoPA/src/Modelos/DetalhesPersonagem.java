@@ -5,20 +5,20 @@
  */
 package Modelos;
 
-import Niveis.Nivel1;
+import Niveis.*;
 
 /**
  *
  * @author Usuario
  */
-public class Detalhes extends javax.swing.JDialog {
+public class DetalhesPersonagem extends javax.swing.JDialog {
 
     Personagem personagem;
     Principal tela;
     /**
      * Creates new form Detalhes
      */
-    public Detalhes(Personagem personagem,Principal tela) {
+    public DetalhesPersonagem(Personagem personagem,Principal tela) {
         initComponents();
         this.personagem=personagem;
         this.tela=tela;
@@ -170,7 +170,7 @@ public class Detalhes extends javax.swing.JDialog {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-        Nivel1 nivel = new Nivel1();
+        Nivel1 nivel = new Nivel1(personagem);
         nivel.setVisible(true);
         this.dispose();
         tela.dispose();
