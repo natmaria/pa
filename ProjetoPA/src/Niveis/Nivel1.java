@@ -5,6 +5,7 @@
  */
 package Niveis;
 import Modelos.*;
+import java.util.Random;
 /**
  *
  * @author Usuario
@@ -28,20 +29,43 @@ Personagem personagem;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        lblAtaque = new javax.swing.JLabel();
+        txtNomePersonagem = new javax.swing.JTextField();
+        txtAtaqueInimigo = new javax.swing.JTextField();
+        txtVidaInimigo = new javax.swing.JTextField();
+        lblAtaqueInimigo = new javax.swing.JLabel();
+        lblVidaInimigo = new javax.swing.JLabel();
+        txtNomeInimigo = new javax.swing.JTextField();
+        txtAtaquePersonagem = new javax.swing.JTextField();
+        txtVidaPersonagem = new javax.swing.JTextField();
+        lblAtaqueInimigo1 = new javax.swing.JLabel();
+        lblVidaInimigo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jTextField1.setText("jTextField1");
+        txtNomePersonagem.setEditable(false);
 
-        jTextField2.setText("jTextField2");
+        txtAtaqueInimigo.setEditable(false);
 
-        jTextField3.setText("jTextField3");
+        txtVidaInimigo.setEditable(false);
 
-        lblAtaque.setText("Ataque:");
+        lblAtaqueInimigo.setText("Ataque:");
+
+        lblVidaInimigo.setText("Vida:");
+
+        txtNomeInimigo.setEditable(false);
+
+        txtAtaquePersonagem.setEditable(false);
+
+        txtVidaPersonagem.setEditable(false);
+
+        lblAtaqueInimigo1.setText("Ataque:");
+
+        lblVidaInimigo1.setText("Vida:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,43 +74,100 @@ Personagem personagem;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAtaque)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(288, Short.MAX_VALUE))
+                                .addGap(11, 11, 11)
+                                .addComponent(lblAtaqueInimigo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblVidaInimigo)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAtaqueInimigo, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(txtVidaInimigo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(lblAtaqueInimigo1))
+                            .addComponent(lblVidaInimigo1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAtaquePersonagem)
+                            .addComponent(txtVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtNomeInimigo, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                        .addGap(98, 98, 98)
+                        .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAtaque))
+                    .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomeInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAtaqueInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAtaqueInimigo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVidaInimigo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAtaquePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAtaqueInimigo1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblVidaInimigo1))))
                 .addContainerGap(217, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        mostrarInimigo();
+        mostrarPersonagem();
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
-
+private void mostrarInimigo() {
+    Random gerador = new Random();
+    Inimigo nivel1 = new Inimigo();
+    nivel1.setNome("Inimigo Nível 1");
+    nivel1.setNivel(1);
+    nivel1.setVida(100);
+    nivel1.setAtaque(gerador.nextInt(50) + 1);
+    txtNomeInimigo.setText(nivel1.getNome());
+    txtAtaqueInimigo.setText(""+nivel1.getAtaque());
+    txtVidaInimigo.setText(""+nivel1.getVida());
+}
+private void mostrarPersonagem(){
+    txtNomePersonagem.setText(personagem.getNome());
+    txtAtaquePersonagem.setText(""+personagem.getAtaque());
+    txtVidaPersonagem.setText(""+personagem.getVida());   
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JLabel lblAtaque;
+    private javax.swing.JLabel lblAtaqueInimigo;
+    private javax.swing.JLabel lblAtaqueInimigo1;
+    private javax.swing.JLabel lblVidaInimigo;
+    private javax.swing.JLabel lblVidaInimigo1;
+    private javax.swing.JTextField txtAtaqueInimigo;
+    private javax.swing.JTextField txtAtaquePersonagem;
+    private javax.swing.JTextField txtNomeInimigo;
+    private javax.swing.JTextField txtNomePersonagem;
+    private javax.swing.JTextField txtVidaInimigo;
+    private javax.swing.JTextField txtVidaPersonagem;
     // End of variables declaration//GEN-END:variables
 }
