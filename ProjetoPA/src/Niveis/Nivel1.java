@@ -5,6 +5,7 @@
  */
 package Niveis;
 import Modelos.*;
+import java.awt.HeadlessException;
 import java.util.Random;
 import javax.swing.JOptionPane;
 /**
@@ -44,6 +45,7 @@ Inimigo nivel1 = new Inimigo();
         lblVidaInimigo1 = new javax.swing.JLabel();
         btnQuemAtaca = new javax.swing.JButton();
         btnAvanca = new javax.swing.JButton();
+        btnTentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -79,7 +81,11 @@ Inimigo nivel1 = new Inimigo();
             }
         });
 
-        btnAvanca.setText("Avança >");
+        btnAvanca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-right.png"))); // NOI18N
+        btnAvanca.setText("Avançar");
+
+        btnTentar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-sync.png"))); // NOI18N
+        btnTentar.setText("Tentar novamente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,9 +125,11 @@ Inimigo nivel1 = new Inimigo();
                                 .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(btnTentar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAvanca)
-                .addGap(38, 38, 38))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,39 +158,59 @@ Inimigo nivel1 = new Inimigo();
                             .addComponent(lblVidaInimigo1))))
                 .addGap(29, 29, 29)
                 .addComponent(btnQuemAtaca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addComponent(btnAvanca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAvanca)
+                    .addComponent(btnTentar))
                 .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         mostrarInimigo();
         mostrarPersonagem();
+        btnTentar.setEnabled(false);
+        btnAvanca.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnQuemAtacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemAtacaActionPerformed
         // TODO add your handling code here:
       Random gerador = new Random();
-      ataca = gerador.nextInt(1);
+      ataca = gerador.nextInt(2);
       try {
       if (ataca==0) {
           JOptionPane.showMessageDialog(this, "Você ataca!");
           int vida = perdeVida(personagem, nivel1);
+          if (vida > 0) {
           txtVidaInimigo.setText(""+vida);
+          } else {
+            txtVidaInimigo.setText(""+0);
+            JOptionPane.showMessageDialog(this, "Você ganhou!");
+            btnQuemAtaca.setEnabled(false);
+            btnAvanca.setEnabled(true);
+          }
       } else {
          JOptionPane.showMessageDialog(this, "O inimigo ataca!");
          int vida = perdeVida(personagem, nivel1);
+         if (vida >0) {
          txtVidaPersonagem.setText(""+vida);
+         } else {
+            txtVidaPersonagem.setText(""+0);
+            JOptionPane.showMessageDialog(this, "Você perdeu!");
+            btnQuemAtaca.setEnabled(false);
+            btnTentar.setEnabled(true);
+         }
+             
       }
     }//GEN-LAST:event_btnQuemAtacaActionPerformed
- catch (Exception e) {
+ catch (HeadlessException e) {
+ }   
  }
-      
- }
+    
     
     /**
      * @param args the command line arguments
@@ -215,6 +243,7 @@ private int perdeVida(Personagem p, Inimigo i) {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvanca;
     private javax.swing.JButton btnQuemAtaca;
+    private javax.swing.JButton btnTentar;
     private javax.swing.JLabel lblAtaqueInimigo;
     private javax.swing.JLabel lblAtaqueInimigo1;
     private javax.swing.JLabel lblVidaInimigo;
