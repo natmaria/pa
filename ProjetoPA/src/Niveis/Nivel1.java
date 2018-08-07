@@ -43,6 +43,7 @@ Inimigo nivel1 = new Inimigo();
         lblAtaqueInimigo1 = new javax.swing.JLabel();
         lblVidaInimigo1 = new javax.swing.JLabel();
         btnQuemAtaca = new javax.swing.JButton();
+        btnAvanca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -77,6 +78,8 @@ Inimigo nivel1 = new Inimigo();
                 btnQuemAtacaActionPerformed(evt);
             }
         });
+
+        btnAvanca.setText("Avança >");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,6 +118,10 @@ Inimigo nivel1 = new Inimigo();
                                 .addGap(98, 98, 98)
                                 .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnAvanca)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +150,9 @@ Inimigo nivel1 = new Inimigo();
                             .addComponent(lblVidaInimigo1))))
                 .addGap(29, 29, 29)
                 .addComponent(btnQuemAtaca)
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                .addComponent(btnAvanca)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -204,6 +213,7 @@ private int perdeVida(Personagem p, Inimigo i) {
     
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAvanca;
     private javax.swing.JButton btnQuemAtaca;
     private javax.swing.JLabel lblAtaqueInimigo;
     private javax.swing.JLabel lblAtaqueInimigo1;
