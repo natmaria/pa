@@ -6,12 +6,15 @@
 package Niveis;
 import Modelos.*;
 import java.util.Random;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
  */
 public class Nivel1 extends javax.swing.JFrame {
 Personagem personagem;
+int ataca;
+Inimigo nivel1 = new Inimigo();
     /**
      * Creates new form Nivel1
      */
@@ -39,6 +42,7 @@ Personagem personagem;
         txtVidaPersonagem = new javax.swing.JTextField();
         lblAtaqueInimigo1 = new javax.swing.JLabel();
         lblVidaInimigo1 = new javax.swing.JLabel();
+        btnQuemAtaca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -67,13 +71,20 @@ Personagem personagem;
 
         lblVidaInimigo1.setText("Vida:");
 
+        btnQuemAtaca.setText("Quem ataca?");
+        btnQuemAtaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuemAtacaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
@@ -95,11 +106,14 @@ Personagem personagem;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAtaquePersonagem)
                             .addComponent(txtVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(txtNomeInimigo, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                        .addGap(98, 98, 98)
-                        .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnQuemAtaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtNomeInimigo, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                                .addGap(98, 98, 98)
+                                .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,7 +141,9 @@ Personagem personagem;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblVidaInimigo1))))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(btnQuemAtaca)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
@@ -139,12 +155,31 @@ Personagem personagem;
         mostrarPersonagem();
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnQuemAtacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemAtacaActionPerformed
+        // TODO add your handling code here:
+      Random gerador = new Random();
+      ataca = gerador.nextInt(1);
+      try {
+      if (ataca==0) {
+          JOptionPane.showMessageDialog(this, "Você ataca!");
+          int vida = perdeVida(personagem, nivel1);
+          txtVidaInimigo.setText(""+vida);
+      } else {
+         JOptionPane.showMessageDialog(this, "O inimigo ataca!");
+         int vida = perdeVida(personagem, nivel1);
+         txtVidaPersonagem.setText(""+vida);
+      }
+    }//GEN-LAST:event_btnQuemAtacaActionPerformed
+ catch (Exception e) {
+ }
+      
+ }
+    
     /**
      * @param args the command line arguments
      */
 private void mostrarInimigo() {
     Random gerador = new Random();
-    Inimigo nivel1 = new Inimigo();
     nivel1.setNome("Inimigo Nível 1");
     nivel1.setNivel(1);
     nivel1.setVida(100);
@@ -158,7 +193,18 @@ private void mostrarPersonagem(){
     txtAtaquePersonagem.setText(""+personagem.getAtaque());
     txtVidaPersonagem.setText(""+personagem.getVida());   
 }
+private int perdeVida(Personagem p, Inimigo i) {
+    if (ataca==0) {
+        i.setVida(i.getVida()-p.getAtaque());
+        return i.getVida();
+    } else {
+        p.setVida(p.getVida() - i.getAtaque());
+        return p.getVida();
+    }
+    
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnQuemAtaca;
     private javax.swing.JLabel lblAtaqueInimigo;
     private javax.swing.JLabel lblAtaqueInimigo1;
     private javax.swing.JLabel lblVidaInimigo;
