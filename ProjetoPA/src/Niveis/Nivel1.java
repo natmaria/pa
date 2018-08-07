@@ -83,9 +83,19 @@ Inimigo nivel1 = new Inimigo();
 
         btnAvanca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-right.png"))); // NOI18N
         btnAvanca.setText("Avançar");
+        btnAvanca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvancaActionPerformed(evt);
+            }
+        });
 
         btnTentar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-sync.png"))); // NOI18N
         btnTentar.setText("Tentar novamente");
+        btnTentar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTentarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,37 +189,58 @@ Inimigo nivel1 = new Inimigo();
 
     private void btnQuemAtacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemAtacaActionPerformed
         // TODO add your handling code here:
-      Random gerador = new Random();
-      ataca = gerador.nextInt(2);
-      try {
-      if (ataca==0) {
-          JOptionPane.showMessageDialog(this, "Você ataca!");
-          int vida = perdeVida(personagem, nivel1);
-          if (vida > 0) {
-          txtVidaInimigo.setText(""+vida);
-          } else {
-            txtVidaInimigo.setText(""+0);
-            JOptionPane.showMessageDialog(this, "Você ganhou!");
-            btnQuemAtaca.setEnabled(false);
-            btnAvanca.setEnabled(true);
-          }
-      } else {
-         JOptionPane.showMessageDialog(this, "O inimigo ataca!");
-         int vida = perdeVida(personagem, nivel1);
-         if (vida >0) {
-         txtVidaPersonagem.setText(""+vida);
-         } else {
-            txtVidaPersonagem.setText(""+0);
-            JOptionPane.showMessageDialog(this, "Você perdeu!");
-            btnQuemAtaca.setEnabled(false);
-            btnTentar.setEnabled(true);
-         }
-             
-      }
+        Random gerador = new Random();
+        ataca = gerador.nextInt(2);
+        try{
+            
+            if (ataca==0) {
+                JOptionPane.showMessageDialog(this, "Você ataca!");
+                int vida = perdeVida(personagem, nivel1);
+                if (vida > 0) {
+                txtVidaInimigo.setText(""+vida);
+                } else {
+                  txtVidaInimigo.setText(""+0);
+                  JOptionPane.showMessageDialog(this, "Você ganhou!");
+                  btnQuemAtaca.setEnabled(false);
+                  btnAvanca.setEnabled(true);
+                }
+            } else {
+               JOptionPane.showMessageDialog(this, "O inimigo ataca!");
+               int vida = perdeVida(personagem, nivel1);
+               if (vida >0) {
+               txtVidaPersonagem.setText(""+vida);
+               } else {
+                  txtVidaPersonagem.setText(""+0);
+                  JOptionPane.showMessageDialog(this, "Você perdeu!");
+                  btnQuemAtaca.setEnabled(false);
+                  btnTentar.setEnabled(true);
+               }
+
+            }
+        
+        }catch(HeadlessException ex){
+            
+        }
     }//GEN-LAST:event_btnQuemAtacaActionPerformed
- catch (HeadlessException e) {
- }   
- }
+
+    private void btnTentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTentarActionPerformed
+        // TODO add your handling code here:
+        mostrarInimigo();
+        mostrarPersonagem();
+        btnTentar.setEnabled(false);
+        btnAvanca.setEnabled(false);
+        btnQuemAtaca.setEnabled(true);
+    }//GEN-LAST:event_btnTentarActionPerformed
+
+    private void btnAvancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvancaActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnAvancaActionPerformed
+
+   
+    
+    
+    
     
     
     /**
@@ -220,12 +251,14 @@ private void mostrarInimigo() {
     nivel1.setNome("Inimigo Nível 1");
     nivel1.setNivel(1);
     nivel1.setVida(100);
-    nivel1.setAtaque(gerador.nextInt(50) + 1);
+    nivel1.setAtaque(100);
     txtNomeInimigo.setText(nivel1.getNome());
     txtAtaqueInimigo.setText(""+nivel1.getAtaque());
     txtVidaInimigo.setText(""+nivel1.getVida());
 }
 private void mostrarPersonagem(){
+    personagem.setVida(100);
+    personagem.getAtaque();
     txtNomePersonagem.setText(personagem.getNome());
     txtAtaquePersonagem.setText(""+personagem.getAtaque());
     txtVidaPersonagem.setText(""+personagem.getVida());   
