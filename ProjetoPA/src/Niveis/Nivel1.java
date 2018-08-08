@@ -251,7 +251,7 @@ private void mostrarInimigo() {
     nivel1.setNome("Inimigo Nível 1");
     nivel1.setNivel(1);
     nivel1.setVida(100);
-    nivel1.setAtaque(100);
+    nivel1.setAtaque(gerador.nextInt(50)+1);
     txtNomeInimigo.setText(nivel1.getNome());
     txtAtaqueInimigo.setText(""+nivel1.getAtaque());
     txtVidaInimigo.setText(""+nivel1.getVida());
