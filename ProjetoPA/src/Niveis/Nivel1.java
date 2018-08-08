@@ -5,6 +5,7 @@
  */
 package Niveis;
 import Modelos.*;
+import aula.CaixaDeDialogo;
 import java.awt.HeadlessException;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -219,7 +220,7 @@ Inimigo nivel1 = new Inimigo();
             }
         
         }catch(HeadlessException ex){
-            
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage().toString(),"ERRO",'e');
         }
     }//GEN-LAST:event_btnQuemAtacaActionPerformed
 
@@ -234,6 +235,8 @@ Inimigo nivel1 = new Inimigo();
 
     private void btnAvancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvancaActionPerformed
         // TODO add your handling code here:
+        Nivel2 tela = new Nivel2(personagem);
+        tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAvancaActionPerformed
 
@@ -258,7 +261,6 @@ private void mostrarInimigo() {
 }
 private void mostrarPersonagem(){
     personagem.setVida(100);
-    personagem.getAtaque();
     txtNomePersonagem.setText(personagem.getNome());
     txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
     txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
