@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
 public class Nivel1 extends javax.swing.JFrame {
 Personagem personagem;
 int ataca;
+int ataque;
 Inimigo nivel1 = new Inimigo();
+Random gerador = new Random();
     /**
      * Creates new form Nivel1
      */
@@ -192,13 +194,20 @@ Inimigo nivel1 = new Inimigo();
         // TODO add your handling code here:
         Random gerador = new Random();
         ataca = gerador.nextInt(2);
+        ataque = gerador.nextInt(20)+1;
         try{
             
             if (ataca==0) {
                 JOptionPane.showMessageDialog(this, "Você ataca!");
-                int vida = perdeVida(personagem, nivel1);
+                int vida = perdeVida(personagem, nivel1, ataque);
                 if (vida > 0) {
-                txtVidaInimigo.setText(String.valueOf(vida));
+                    if (ataque >12) {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + personagem.getAtaque()/2, "ATAQUE CRÍTICO", 'i');
+                        txtVidaInimigo.setText(String.valueOf(vida));
+                    } else {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + personagem.getAtaque()/3, "ATAQUE FRACO", 'i');
+                        txtVidaInimigo.setText(String.valueOf(vida));
+                    }
                 } else {
                   txtVidaInimigo.setText(String.valueOf(0));
                   JOptionPane.showMessageDialog(this, "Você ganhou!");
@@ -207,9 +216,15 @@ Inimigo nivel1 = new Inimigo();
                 }
             } else {
                JOptionPane.showMessageDialog(this, "O inimigo ataca!");
-               int vida = perdeVida(personagem, nivel1);
+               int vida = perdeVida(personagem, nivel1, ataque);
                if (vida >0) {
-               txtVidaPersonagem.setText(String.valueOf(vida));
+                       if (ataque >12) {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + nivel1.getAtaque()/2, "ATAQUE CRÍTICO", 'i');
+                        txtVidaPersonagem.setText(String.valueOf(vida));
+                    } else {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + nivel1.getAtaque()/3, "ATAQUE FRACO", 'i');
+                        txtVidaPersonagem.setText(String.valueOf(vida));
+                    }
                } else {
                   txtVidaPersonagem.setText(String.valueOf(0));
                   JOptionPane.showMessageDialog(this, "Você perdeu!");
@@ -265,13 +280,23 @@ private void mostrarPersonagem(){
     txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
     txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
 }
-private int perdeVida(Personagem p, Inimigo i) {
+private int perdeVida(Personagem p, Inimigo i, int ataque) {
     if (ataca==0) {
-        i.setVida(i.getVida()-p.getAtaque());
+        if (ataque >12){
+        i.setVida(i.getVida()-p.getAtaque()/2);
         return i.getVida();
+        }else {
+        i.setVida(i.getVida()-p.getAtaque()/3);
+        return i.getVida();   
+        }
     } else {
-        p.setVida(p.getVida() - i.getAtaque());
+        if (ataque >12){
+        p.setVida(p.getVida() - i.getAtaque()/2);
         return p.getVida();
+        } else {
+        p.setVida(p.getVida() - i.getAtaque()/3);
+        return p.getVida();  
+        }
     }
     
 }
