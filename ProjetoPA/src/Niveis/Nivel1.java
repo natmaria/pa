@@ -197,9 +197,9 @@ Inimigo nivel1 = new Inimigo();
                 JOptionPane.showMessageDialog(this, "Você ataca!");
                 int vida = perdeVida(personagem, nivel1);
                 if (vida > 0) {
-                txtVidaInimigo.setText(""+vida);
+                txtVidaInimigo.setText(String.valueOf(vida));
                 } else {
-                  txtVidaInimigo.setText(""+0);
+                  txtVidaInimigo.setText(String.valueOf(0));
                   JOptionPane.showMessageDialog(this, "Você ganhou!");
                   btnQuemAtaca.setEnabled(false);
                   btnAvanca.setEnabled(true);
@@ -208,9 +208,9 @@ Inimigo nivel1 = new Inimigo();
                JOptionPane.showMessageDialog(this, "O inimigo ataca!");
                int vida = perdeVida(personagem, nivel1);
                if (vida >0) {
-               txtVidaPersonagem.setText(""+vida);
+               txtVidaPersonagem.setText(String.valueOf(vida));
                } else {
-                  txtVidaPersonagem.setText(""+0);
+                  txtVidaPersonagem.setText(String.valueOf(0));
                   JOptionPane.showMessageDialog(this, "Você perdeu!");
                   btnQuemAtaca.setEnabled(false);
                   btnTentar.setEnabled(true);
@@ -253,15 +253,15 @@ private void mostrarInimigo() {
     nivel1.setVida(100);
     nivel1.setAtaque(gerador.nextInt(50)+1);
     txtNomeInimigo.setText(nivel1.getNome());
-    txtAtaqueInimigo.setText(""+nivel1.getAtaque());
-    txtVidaInimigo.setText(""+nivel1.getVida());
+    txtAtaqueInimigo.setText(String.valueOf(nivel1.getAtaque()));
+    txtVidaInimigo.setText(String.valueOf(nivel1.getVida()));
 }
 private void mostrarPersonagem(){
     personagem.setVida(100);
     personagem.getAtaque();
     txtNomePersonagem.setText(personagem.getNome());
-    txtAtaquePersonagem.setText(""+personagem.getAtaque());
-    txtVidaPersonagem.setText(""+personagem.getVida());   
+    txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
+    txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
 }
 private int perdeVida(Personagem p, Inimigo i) {
     if (ataca==0) {

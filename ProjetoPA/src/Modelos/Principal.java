@@ -186,7 +186,7 @@ public class Principal extends javax.swing.JFrame {
 
     
     public boolean validarCampos() {
-        if (txtNome.getText().length() == 0) {
+        if (txtNome.getText().trim().length() < 3) {
             return false;
         } else {
             return true;
@@ -196,15 +196,14 @@ public class Principal extends javax.swing.JFrame {
     private Personagem escolherPersonagem() {
        try {
            Personagem personagem = new Personagem();
+           personagem.setNome(txtNome.getText().trim());
            if (rbtnClasse1.isSelected()) {
-            personagem.setNome(txtNome.getText());
             personagem.setClasse("Oda");
             personagem.setNivel(1);
             personagem.setAtaque(50);
             personagem.setVida(100);
         } 
         if (rbtnClasse2.isSelected()) {
-            personagem.setNome(txtNome.getText());
             personagem.setClasse("Mako");
             personagem.setNivel(1);
             personagem.setAtaque(70);
@@ -212,7 +211,6 @@ public class Principal extends javax.swing.JFrame {
             } 
         
         if (rbtnClasse3.isSelected()) {
-            personagem.setNome(txtNome.getText());
             personagem.setClasse("Tritan");
             personagem.setNivel(1);
             personagem.setAtaque(80);
