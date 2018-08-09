@@ -194,55 +194,22 @@ Random gerador = new Random();
         // TODO add your handling code here:
         Random gerador = new Random();
         ataca = gerador.nextInt(2);
-        ataque = gerador.nextInt(20)+1;
         try{
-            
             if (ataca==0) {
-                JOptionPane.showMessageDialog(this, "Você ataca!");
-                int vida = perdeVida(personagem, nivel1, ataque);
-                if (vida > 0) {
-                    if (ataque >12) {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + personagem.getAtaque()/2, "ATAQUE CRÍTICO", 'i');
-                        txtVidaInimigo.setText(String.valueOf(vida));
-                    } else {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + personagem.getAtaque()/3, "ATAQUE FRACO", 'i');
-                        txtVidaInimigo.setText(String.valueOf(vida));
-                    }
-                } else {
-                  txtVidaInimigo.setText(String.valueOf(0));
-                  JOptionPane.showMessageDialog(this, "Você ganhou!");
-                  btnQuemAtaca.setEnabled(false);
-                  btnAvanca.setEnabled(true);
-                }
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Você ataca!", "Ataque!", 'i');
+                    ataquePersonagem();
             } else {
-               JOptionPane.showMessageDialog(this, "O inimigo ataca!");
-               int vida = perdeVida(personagem, nivel1, ataque);
-               if (vida >0) {
-                       if (ataque >12) {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + nivel1.getAtaque()/2, "ATAQUE CRÍTICO", 'i');
-                        txtVidaPersonagem.setText(String.valueOf(vida));
-                    } else {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Ataque:" + nivel1.getAtaque()/3, "ATAQUE FRACO", 'i');
-                        txtVidaPersonagem.setText(String.valueOf(vida));
-                    }
-               } else {
-                  txtVidaPersonagem.setText(String.valueOf(0));
-                  JOptionPane.showMessageDialog(this, "Você perdeu!");
-                  btnQuemAtaca.setEnabled(false);
-                  btnTentar.setEnabled(true);
-               }
-
+               CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo ataca!", "Ataque!", 'i');;
+                  ataqueInimigo();
             }
-        
-        }catch(HeadlessException ex){
+        } catch(HeadlessException ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage().toString(),"ERRO",'e');
         }
     }//GEN-LAST:event_btnQuemAtacaActionPerformed
 
     private void btnTentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTentarActionPerformed
         // TODO add your handling code here:
-        mostrarInimigo();
-        mostrarPersonagem();
+        updatePersonagem();
         btnTentar.setEnabled(false);
         btnAvanca.setEnabled(false);
         btnQuemAtaca.setEnabled(true);
@@ -265,7 +232,6 @@ Random gerador = new Random();
      * @param args the command line arguments
      */
 private void mostrarInimigo() {
-    Random gerador = new Random();
     nivel1.setNome("Inimigo Nível 1");
     nivel1.setNivel(1);
     nivel1.setVida(100);
@@ -275,30 +241,70 @@ private void mostrarInimigo() {
     txtVidaInimigo.setText(String.valueOf(nivel1.getVida()));
 }
 private void mostrarPersonagem(){
-    personagem.setVida(100);
     txtNomePersonagem.setText(personagem.getNome());
     txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
     txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
 }
-private int perdeVida(Personagem p, Inimigo i, int ataque) {
-    if (ataca==0) {
-        if (ataque >12){
-        i.setVida(i.getVida()-p.getAtaque()/2);
-        return i.getVida();
-        }else {
-        i.setVida(i.getVida()-p.getAtaque()/3);
-        return i.getVida();   
-        }
-    } else {
-        if (ataque >12){
-        p.setVida(p.getVida() - i.getAtaque()/2);
-        return p.getVida();
+private void updatePersonagem() {
+        personagem.setVida(100);
+}
+
+private void ataquePersonagem() {
+   int ataque = gerador.nextInt(20)+1;
+    if (ataque >12){
+      int ataca = personagem.getAtaque()/2;
+      nivel1.setVida(nivel1.getVida()-ataca);
+      CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo perdeu " + ataca + " de vida!", "ATAQUE CRÍTICO", 'i');
+        if (nivel1.getVida() >0) {
+           txtVidaInimigo.setText(String.valueOf(nivel1.getVida())); 
         } else {
-        p.setVida(p.getVida() - i.getAtaque()/3);
-        return p.getVida();  
+      txtVidaInimigo.setText(String.valueOf(0)); 
+      CaixaDeDialogo.obterinstancia().exibirMensagem("Você ganhou!", "PARABÉNS", 'i');
+      btnQuemAtaca.setEnabled(false);
+      btnAvanca.setEnabled(true); 
+        }
+      }else {
+        int ataca = personagem.getAtaque()/3;
+        nivel1.setVida(nivel1.getVida()-ataca);
+        CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo perdeu " + ataca + " de vida!", "ATAQUE FRACO", 'i');
+        if (nivel1.getVida() > 0) {
+        txtVidaInimigo.setText(String.valueOf(nivel1.getVida()));   
+        } else {
+            txtVidaInimigo.setText(String.valueOf(0)); 
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Você ganhou!", "PARABÉNS", 'i');
+            btnQuemAtaca.setEnabled(false);
+            btnAvanca.setEnabled(true);   
         }
     }
-    
+}
+private void ataqueInimigo() {
+   int ataque = gerador.nextInt(20)+1;
+    int vida = personagem.getVida();
+        if (ataque >12){
+          int ataca = nivel1.getAtaque()/2;
+          personagem.setVida(personagem.getVida()-ataca);
+          CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu " + ataca + " de vida!", "ATAQUE CRÍTICO", 'i');
+          if (personagem.getVida() > 0) {
+            txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));
+        } else {
+            txtVidaPersonagem.setText(String.valueOf(0)); 
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu!", "TENTE NOVAMENTE", 'i');
+            btnQuemAtaca.setEnabled(false);
+            btnTentar.setEnabled(true);   
+          }
+        } else {
+            int ataca = nivel1.getAtaque()/3;
+            personagem.setVida(personagem.getVida()-ataca);
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu " + ataca + " de vida!", "ATAQUE FRACO", 'i');
+            if (personagem.getVida() > 0) {
+            txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
+        }else {
+            txtVidaPersonagem.setText(String.valueOf(0)); 
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu!", "TENTE NOVAMENTE", 'i');
+            btnQuemAtaca.setEnabled(false);
+            btnTentar.setEnabled(true);  
+    }
+  }
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAvanca;
