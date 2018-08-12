@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package aula;
+package Modelos;
 import javax.swing.JOptionPane;
 /**
  *
@@ -60,6 +60,13 @@ public class CaixaDeDialogo {
         
     public boolean pedirConfirmacao( String frase, String boxFrase, char tipo ) {
         String[] opcoes = { "Sim", "Não" };
+        int opcaoPadrao = 0;
+        String iconTypes = "eiap";
+        int escolha = JOptionPane.showOptionDialog(null,frase,boxFrase,JOptionPane.YES_NO_OPTION,iconTypes.indexOf(tipo),null,opcoes,opcoes[opcaoPadrao]);
+        return (escolha == 0);
+    }
+        public boolean escolherAumento( String frase, String boxFrase, char tipo ) {
+        String[] opcoes = { "Vida", "Ataque" };
         int opcaoPadrao = 0;
         String iconTypes = "eiap";
         int escolha = JOptionPane.showOptionDialog(null,frase,boxFrase,JOptionPane.YES_NO_OPTION,iconTypes.indexOf(tipo),null,opcoes,opcoes[opcaoPadrao]);

@@ -5,7 +5,7 @@
  */
 package Niveis;
 import Modelos.*;
-import aula.CaixaDeDialogo;
+import Modelos.CaixaDeDialogo;
 import java.awt.HeadlessException;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -17,6 +17,7 @@ public class Nivel1 extends javax.swing.JFrame {
 Personagem personagem;
 int ataca;
 int ataque;
+int vidaOriginal;
 Inimigo nivel1 = new Inimigo();
 Random gerador = new Random();
     /**
@@ -47,8 +48,6 @@ Random gerador = new Random();
         lblAtaqueInimigo1 = new javax.swing.JLabel();
         lblVidaInimigo1 = new javax.swing.JLabel();
         btnQuemAtaca = new javax.swing.JButton();
-        btnAvanca = new javax.swing.JButton();
-        btnTentar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -81,22 +80,6 @@ Random gerador = new Random();
         btnQuemAtaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuemAtacaActionPerformed(evt);
-            }
-        });
-
-        btnAvanca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-right.png"))); // NOI18N
-        btnAvanca.setText("Avançar");
-        btnAvanca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAvancaActionPerformed(evt);
-            }
-        });
-
-        btnTentar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/sign-sync.png"))); // NOI18N
-        btnTentar.setText("Tentar novamente");
-        btnTentar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTentarActionPerformed(evt);
             }
         });
 
@@ -137,12 +120,6 @@ Random gerador = new Random();
                                 .addGap(98, 98, 98)
                                 .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(btnTentar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAvanca)
-                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,11 +148,7 @@ Random gerador = new Random();
                             .addComponent(lblVidaInimigo1))))
                 .addGap(29, 29, 29)
                 .addComponent(btnQuemAtaca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAvanca)
-                    .addComponent(btnTentar))
-                .addGap(23, 23, 23))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,8 +159,6 @@ Random gerador = new Random();
         // TODO add your handling code here:
         mostrarInimigo();
         mostrarPersonagem();
-        btnTentar.setEnabled(false);
-        btnAvanca.setEnabled(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void btnQuemAtacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemAtacaActionPerformed
@@ -207,21 +178,6 @@ Random gerador = new Random();
         }
     }//GEN-LAST:event_btnQuemAtacaActionPerformed
 
-    private void btnTentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTentarActionPerformed
-        // TODO add your handling code here:
-        updatePersonagem();
-        btnTentar.setEnabled(false);
-        btnAvanca.setEnabled(false);
-        btnQuemAtaca.setEnabled(true);
-    }//GEN-LAST:event_btnTentarActionPerformed
-
-    private void btnAvancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvancaActionPerformed
-        // TODO add your handling code here:
-        Nivel2 tela = new Nivel2(personagem);
-        tela.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAvancaActionPerformed
-
    
     
     
@@ -235,7 +191,8 @@ private void mostrarInimigo() {
     nivel1.setNome("Inimigo Nível 1");
     nivel1.setNivel(1);
     nivel1.setVida(100);
-    nivel1.setAtaque(gerador.nextInt(50)+1);
+   // nivel1.setAtaque(gerador.nextInt(50)+1);
+    nivel1.setAtaque(100);
     txtNomeInimigo.setText(nivel1.getNome());
     txtAtaqueInimigo.setText(String.valueOf(nivel1.getAtaque()));
     txtVidaInimigo.setText(String.valueOf(nivel1.getVida()));
@@ -243,10 +200,21 @@ private void mostrarInimigo() {
 private void mostrarPersonagem(){
     txtNomePersonagem.setText(personagem.getNome());
     txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
-    txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
+    txtVidaPersonagem.setText(String.valueOf(personagem.getVida())); 
+    vidaOriginal=personagem.getVida();
 }
-private void updatePersonagem() {
-        personagem.setVida(100);
+private void resetPersonagemGanhou() {
+        txtVidaPersonagem.setText(String.valueOf(vidaOriginal));
+        txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
+}
+
+private void resetPersonagemPerdeu() {
+     personagem.setVida(vidaOriginal);
+     txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));
+}
+public void resetInimigo() {
+    nivel1.setVida(100);
+    txtVidaInimigo.setText(String.valueOf(nivel1.getVida()));
 }
 
 private void ataquePersonagem() {
@@ -258,10 +226,7 @@ private void ataquePersonagem() {
         if (nivel1.getVida() >0) {
            txtVidaInimigo.setText(String.valueOf(nivel1.getVida())); 
         } else {
-      txtVidaInimigo.setText(String.valueOf(0)); 
-      CaixaDeDialogo.obterinstancia().exibirMensagem("Você ganhou!", "PARABÉNS", 'i');
-      btnQuemAtaca.setEnabled(false);
-      btnAvanca.setEnabled(true); 
+            voceGanhou();
         }
       }else {
         int ataca = personagem.getAtaque()/3;
@@ -270,10 +235,7 @@ private void ataquePersonagem() {
         if (nivel1.getVida() > 0) {
         txtVidaInimigo.setText(String.valueOf(nivel1.getVida()));   
         } else {
-            txtVidaInimigo.setText(String.valueOf(0)); 
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Você ganhou!", "PARABÉNS", 'i');
-            btnQuemAtaca.setEnabled(false);
-            btnAvanca.setEnabled(true);   
+        voceGanhou();
         }
     }
 }
@@ -287,10 +249,7 @@ private void ataqueInimigo() {
           if (personagem.getVida() > 0) {
             txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));
         } else {
-            txtVidaPersonagem.setText(String.valueOf(0)); 
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu!", "TENTE NOVAMENTE", 'i');
-            btnQuemAtaca.setEnabled(false);
-            btnTentar.setEnabled(true);   
+            vocePerdeu();
           }
         } else {
             int ataca = nivel1.getAtaque()/3;
@@ -299,17 +258,57 @@ private void ataqueInimigo() {
             if (personagem.getVida() > 0) {
             txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
         }else {
-            txtVidaPersonagem.setText(String.valueOf(0)); 
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu!", "TENTE NOVAMENTE", 'i');
-            btnQuemAtaca.setEnabled(false);
-            btnTentar.setEnabled(true);  
+                vocePerdeu();
     }
   }
 }
+
+public void vocePerdeu() {
+  txtVidaPersonagem.setText(String.valueOf(0)); 
+  boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tenar novamente?", "VOCÊ PERDEU!", 'i');
+  if (escolha == true) {
+     resetPersonagemPerdeu();
+     resetInimigo();
+  } else {
+      System.exit(0);
+  }  
+}
+
+public void voceGanhou() {
+    txtVidaInimigo.setText(String.valueOf(0)); 
+    nextNivel();
+    boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tentar o próximo nível?", "PARABÉNS VOCÊ GANHOU", 'i');
+    if(escolha == true){
+        Nivel2 tela = new Nivel2(personagem);
+        tela.setVisible(true);
+        this.dispose();   
+    } else {
+        resetPersonagemGanhou();
+        mostrarInimigo();
+    }
+}
+
+public void nextNivel(){
+  personagem.setNivel(2);
+  boolean escolha = CaixaDeDialogo.obterinstancia().escolherAumento("Deseja aumentar 10 XP de Vida ou de Atauqe?", "PARABÉNS VOCÊ PASSOU PARA O NÍVEL 2", 'i');  
+  if (escolha ==true) {
+      updateVida();
+  } else {
+      updateAtaque();
+  }
+}
+public void updateVida() {
+    vidaOriginal = vidaOriginal +10;
+    personagem.setVida(vidaOriginal); 
+}
+
+public void updateAtaque() {
+    personagem.setAtaque(personagem.getAtaque()+10);
+    
+    
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAvanca;
     private javax.swing.JButton btnQuemAtaca;
-    private javax.swing.JButton btnTentar;
     private javax.swing.JLabel lblAtaqueInimigo;
     private javax.swing.JLabel lblAtaqueInimigo1;
     private javax.swing.JLabel lblVidaInimigo;
