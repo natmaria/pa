@@ -163,7 +163,6 @@ Random gerador = new Random();
 
     private void btnQuemAtacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemAtacaActionPerformed
         // TODO add your handling code here:
-        Random gerador = new Random();
         ataca = gerador.nextInt(2);
         try{
             if (ataca==0) {
@@ -303,9 +302,7 @@ public void updateVida() {
 }
 
 public void updateAtaque() {
-    personagem.setAtaque(personagem.getAtaque()+10);
-    
-    
+    personagem.setAtaque(personagem.getAtaque()+10);  
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnQuemAtaca;

@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -24,24 +27,33 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblVidaInimigo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtNomeInimigo" min="-2" pref="138" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txtNomePersonagem" min="-2" pref="128" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblAtaqueInimigo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="btnQuemAtaca" min="-2" pref="353" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtAtaqueInimigo" max="32767" attributes="0"/>
-                          <Component id="txtVidaInimigo" max="32767" attributes="0"/>
+                          <Component id="lblAtaqueInimigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblVidaInimigo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtVidaInimigo" pref="92" max="32767" attributes="0"/>
+                          <Component id="txtAtaqueInimigo" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAtaqueInimigo2" min="-2" max="-2" attributes="0"/>
                           <Component id="lblVidaInimigo2" min="-2" max="-2" attributes="0"/>
@@ -51,18 +63,6 @@
                           <Component id="txtAtaquePersonagem" pref="77" max="32767" attributes="0"/>
                           <Component id="txtVidaPersonagem" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="txtNomedoinimigo" min="-2" pref="138" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txtNomePersonagem" min="-2" pref="128" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnAvança" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnQuemAtaca" min="-2" pref="353" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -74,34 +74,45 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNomedoinimigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNomeInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtNomePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblAtaqueInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblAtaqueInimigo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAtaqueInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtAtaquePersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txtAtaquePersonagem" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblVidaInimigo2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtVidaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblAtaqueInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAtaqueInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAtaqueInimigo2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblVidaInimigo" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtVidaInimigo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblVidaInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblVidaInimigo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtVidaInimigo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtVidaPersonagem" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               <Component id="btnQuemAtaca" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
-              <Component id="btnAvança" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace pref="129" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="txtNomedoinimigo">
+    <Component class="javax.swing.JTextField" name="txtNomeInimigo">
     </Component>
     <Component class="javax.swing.JTextField" name="txtNomePersonagem">
     </Component>
@@ -126,28 +137,20 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAtaqueInimigo">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAtaqueInimigoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtVidaInimigo">
     </Component>
     <Component class="javax.swing.JTextField" name="txtAtaquePersonagem">
     </Component>
     <Component class="javax.swing.JTextField" name="txtVidaPersonagem">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVidaPersonagemActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnQuemAtaca">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quem ataca?"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnAvan&#xe7;a">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Avan&#xe7;a&gt;"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuemAtacaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
