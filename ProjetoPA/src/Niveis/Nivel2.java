@@ -58,6 +58,10 @@ Random gerador = new Random();
             }
         });
 
+        txtNomeInimigo.setEditable(false);
+
+        txtNomePersonagem.setEditable(false);
+
         lblAtaqueInimigo.setText("Ataque:");
 
         lblVidaInimigo.setText("Vida:");
@@ -65,6 +69,14 @@ Random gerador = new Random();
         lblAtaqueInimigo2.setText("Ataque:");
 
         lblVidaInimigo2.setText("Vida:");
+
+        txtAtaqueInimigo.setEditable(false);
+
+        txtVidaInimigo.setEditable(false);
+
+        txtAtaquePersonagem.setEditable(false);
+
+        txtVidaPersonagem.setEditable(false);
 
         btnQuemAtaca.setText("Quem ataca?");
         btnQuemAtaca.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +260,7 @@ private void ataqueInimigo() {
 
 public void vocePerdeu() {
   txtVidaPersonagem.setText(String.valueOf(0)); 
-  boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tenar novamente?", "VOCÊ PERDEU!", 'i');
+  boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tentar novamente?", "VOCÊ PERDEU!", 'i');
   if (escolha == true) {
      resetPersonagemPerdeu();
      resetInimigo();

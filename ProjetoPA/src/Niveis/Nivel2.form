@@ -113,8 +113,14 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtNomeInimigo">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNomePersonagem">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblAtaqueInimigo">
       <Properties>
@@ -137,12 +143,24 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAtaqueInimigo">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtVidaInimigo">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtAtaquePersonagem">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtVidaPersonagem">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnQuemAtaca">
       <Properties>

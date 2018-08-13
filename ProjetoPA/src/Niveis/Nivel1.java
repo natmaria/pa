@@ -264,7 +264,7 @@ private void ataqueInimigo() {
 
 public void vocePerdeu() {
   txtVidaPersonagem.setText(String.valueOf(0)); 
-  boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tenar novamente?", "VOCÊ PERDEU!", 'i');
+  boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tentar novamente?", "VOCÊ PERDEU!", 'i');
   if (escolha == true) {
      resetPersonagemPerdeu();
      resetInimigo();
