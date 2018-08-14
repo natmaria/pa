@@ -202,7 +202,7 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         txtAtaque.setText(""+personagem.getAtaque());
         txtVida.setText(""+personagem.getVida());
         txtImagem.setSize(120, 190);
-        txtImagem.setContentType("image/html");
+        txtImagem.setContentType("text/html");
         txtImagem.setEditable(false);
         txtImagem.setOpaque(false);
         if (personagem.getClasse().equals("MAKO")) {
