@@ -9,6 +9,8 @@ import Niveis.*;
 import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
+import javax.swing.BorderFactory;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -95,8 +97,9 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         });
 
         txtImagem.setEditable(false);
+        txtImagem.setBorder(null);
+        txtImagem.setMargin(null);
         txtImagem.setMaximumSize(null);
-        txtImagem.setMinimumSize(null);
         txtImagem.setPreferredSize(null);
         jScrollPane2.setViewportView(txtImagem);
 
@@ -205,6 +208,7 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         txtImagem.setContentType("text/html");
         txtImagem.setEditable(false);
         txtImagem.setOpaque(false);
+        jScrollPane2.setBorder(null);
         if (personagem.getClasse().equals("MAKO")) {
             try {
             URL file = getClass().getResource("../mako.html");
