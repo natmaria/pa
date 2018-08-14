@@ -68,12 +68,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        rbtnClasse1.setText("ODA");
+        rbtnClasse1.setText("OPAL");
 
-        rbtnClasse2.setText("MAKO");
+        rbtnClasse2.setText("KATARA");
         rbtnClasse2.setToolTipText("");
 
-        rbtnClasse3.setText("TRITAN");
+        rbtnClasse3.setText("MAKO");
+        rbtnClasse3.setActionCommand("");
 
         lblNome.setText("Digite o nome do personagem:");
 
@@ -198,20 +199,20 @@ public class Principal extends javax.swing.JFrame {
            Personagem personagem = new Personagem();
            personagem.setNome(txtNome.getText().trim());
            if (rbtnClasse1.isSelected()) {
-            personagem.setClasse("Oda");
+            personagem.setClasse("OPAL");
             personagem.setNivel(1);
             personagem.setAtaque(50);
             personagem.setVida(100);
         } 
         if (rbtnClasse2.isSelected()) {
-            personagem.setClasse("Mako");
+            personagem.setClasse("KATARA");
             personagem.setNivel(1);
             personagem.setAtaque(70);
             personagem.setVida(80);
             } 
         
         if (rbtnClasse3.isSelected()) {
-            personagem.setClasse("Tritan");
+            personagem.setClasse("MAKO");
             personagem.setNivel(1);
             personagem.setAtaque(80);
             personagem.setVida(70);

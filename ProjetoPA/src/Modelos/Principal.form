@@ -144,18 +144,19 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbtnClasse1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ODA"/>
+        <Property name="text" type="java.lang.String" value="OPAL"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbtnClasse2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="MAKO"/>
+        <Property name="text" type="java.lang.String" value="KATARA"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="rbtnClasse3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="TRITAN"/>
+        <Property name="text" type="java.lang.String" value="MAKO"/>
+        <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNome">
