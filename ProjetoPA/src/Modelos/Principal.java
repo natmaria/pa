@@ -68,7 +68,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        rbtnClasse1.setText("OPAL");
+        rbtnClasse1.setText("TOPH");
 
         rbtnClasse2.setText("KATARA");
         rbtnClasse2.setToolTipText("");
@@ -199,7 +199,7 @@ public class Principal extends javax.swing.JFrame {
            Personagem personagem = new Personagem();
            personagem.setNome(txtNome.getText().trim());
            if (rbtnClasse1.isSelected()) {
-            personagem.setClasse("OPAL");
+            personagem.setClasse("TOPH");
             personagem.setNivel(1);
             personagem.setAtaque(50);
             personagem.setVida(100);

@@ -6,6 +6,9 @@
 package Modelos;
 
 import Niveis.*;
+import java.awt.Color;
+import java.io.IOException;
+import java.net.URL;
 
 /**
  *
@@ -45,8 +48,8 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         lblVida = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtImagem = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtImagem = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -92,9 +95,10 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         });
 
         txtImagem.setEditable(false);
-        txtImagem.setColumns(20);
-        txtImagem.setRows(5);
-        jScrollPane1.setViewportView(txtImagem);
+        txtImagem.setMaximumSize(null);
+        txtImagem.setMinimumSize(null);
+        txtImagem.setPreferredSize(null);
+        jScrollPane2.setViewportView(txtImagem);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,11 +107,6 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnConfirmar)
-                        .addGap(35, 35, 35))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -130,9 +129,14 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
                                 .addComponent(lblClasse)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnVoltar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addComponent(btnConfirmar)
+                        .addGap(171, 171, 171))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +147,7 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNome))
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblClasse))
@@ -159,9 +163,9 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblVida))
-                        .addGap(0, 53, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(0, 56, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnConfirmar))
@@ -197,12 +201,47 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         txtNivel.setText(""+personagem.getNivel());
         txtAtaque.setText(""+personagem.getAtaque());
         txtVida.setText(""+personagem.getVida());
-        txtImagem.setSize(300, 500);
+        txtImagem.setSize(120, 190);
+        txtImagem.setContentType("image/html");
+        txtImagem.setEditable(false);
+        txtImagem.setOpaque(false);
+        if (personagem.getClasse().equals("MAKO")) {
+            try {
+            URL file = getClass().getResource("../mako.html");
+            txtImagem.setPage(file);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
     }
+       if (personagem.getClasse().equals("KATARA")) {
+               try {
+            URL file = getClass().getResource("../katara.html");
+            txtImagem.setPage(file);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+       }
+       if (personagem.getClasse().equals("OPAL")) {
+               try {
+            URL file = getClass().getResource("../opal.html");
+            txtImagem.setPage(file);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+       } 
+        if (personagem.getClasse().equals("TOPH")) {
+          try {
+            URL file = getClass().getResource("../toph.html");
+            txtImagem.setPage(file);
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+       }
+  }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAtaque;
     private javax.swing.JLabel lblClasse;
     private javax.swing.JLabel lblNivel;
@@ -210,7 +249,7 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
     private javax.swing.JLabel lblVida;
     private javax.swing.JTextField txtAtaque;
     private javax.swing.JTextField txtClasse;
-    private javax.swing.JTextArea txtImagem;
+    private javax.swing.JEditorPane txtImagem;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtVida;
