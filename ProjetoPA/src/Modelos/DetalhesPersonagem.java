@@ -7,9 +7,14 @@ package Modelos;
 
 import Niveis.*;
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -25,6 +30,7 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
      */
     public DetalhesPersonagem(Personagem personagem,Principal tela) {
         initComponents();
+        this.setSize(500,300);
         this.personagem=personagem;
         this.tela=tela;
     }
@@ -50,10 +56,9 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         lblVida = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtImagem = new javax.swing.JEditorPane();
+        lblImagem = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -96,12 +101,10 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
             }
         });
 
-        txtImagem.setEditable(false);
-        txtImagem.setBorder(null);
-        txtImagem.setMargin(null);
-        txtImagem.setMaximumSize(null);
-        txtImagem.setPreferredSize(null);
-        jScrollPane2.setViewportView(txtImagem);
+        lblImagem.setMaximumSize(new java.awt.Dimension(220, 250));
+        lblImagem.setMinimumSize(new java.awt.Dimension(220, 250));
+        lblImagem.setName(""); // NOI18N
+        lblImagem.setPreferredSize(new java.awt.Dimension(250, 250));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,52 +112,49 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblVida)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtVida, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAtaque)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNivel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblClasse)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(77, 77, 77))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
+                        .addComponent(lblNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnConfirmar)
-                        .addGap(171, 171, 171))))
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblAtaque)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNivel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblClasse)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtClasse, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVida)
+                            .addComponent(btnVoltar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnConfirmar)
+                            .addComponent(txtVida, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(10, 10, Short.MAX_VALUE)
+                .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblClasse))
+                            .addComponent(lblNome)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblClasse)
+                            .addComponent(txtClasse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNivel))
@@ -165,13 +165,12 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtVida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblVida))
-                        .addGap(0, 56, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblVida)))
+                    .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnConfirmar))
+                    .addComponent(btnConfirmar)
+                    .addComponent(btnVoltar))
                 .addGap(20, 20, 20))
         );
 
@@ -204,56 +203,57 @@ public class DetalhesPersonagem extends javax.swing.JDialog {
         txtNivel.setText(""+personagem.getNivel());
         txtAtaque.setText(""+personagem.getAtaque());
         txtVida.setText(""+personagem.getVida());
-        txtImagem.setSize(120, 190);
-        txtImagem.setContentType("text/html");
-        txtImagem.setEditable(false);
-        txtImagem.setOpaque(false);
-        jScrollPane2.setBorder(null);
+        lblImagem.setSize(220,250);
         if (personagem.getClasse().equals("MAKO")) {
             try {
-            URL file = getClass().getResource("../mako.html");
-            txtImagem.setPage(file);
-        } catch (IOException e) {
+               ImageIcon imagem = new ImageIcon(getClass().getResource(
+                            "/images/mako.jpg"));
+               lblImagem.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING)));
+        } catch (Exception e) {
           e.printStackTrace();
         }
     }
        if (personagem.getClasse().equals("KATARA")) {
                try {
-            URL file = getClass().getResource("../katara.html");
-            txtImagem.setPage(file);
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-       }
-       if (personagem.getClasse().equals("OPAL")) {
-               try {
-            URL file = getClass().getResource("../opal.html");
-            txtImagem.setPage(file);
-        } catch (IOException e) {
+                ImageIcon imagem = new ImageIcon(getClass().getResource(
+                            "/images/katara.jpg"));
+               lblImagem.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING)));
+        } catch (Exception e) {
           e.printStackTrace();
         }
        } 
         if (personagem.getClasse().equals("TOPH")) {
           try {
-            URL file = getClass().getResource("../toph.html");
-            txtImagem.setPage(file);
-        } catch (IOException e) {
+                ImageIcon imagem = new ImageIcon(getClass().getResource(
+                            "/images/toph.jpg"));
+               lblImagem.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(150, 150, Image.SCALE_AREA_AVERAGING)));
+        
+        } catch (Exception e) {
           e.printStackTrace();
         }
        }
   }
+    
+    private Image fitimage(Image img , int w , int h)
+{
+    BufferedImage resizedimage = new BufferedImage(w,h,BufferedImage.TYPE_INT_RGB);
+    Graphics2D g2 = resizedimage.createGraphics();
+    g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+    g2.drawImage(img, 0, 0,w,h,null);
+    g2.dispose();
+    return resizedimage;
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAtaque;
     private javax.swing.JLabel lblClasse;
+    private javax.swing.JLabel lblImagem;
     private javax.swing.JLabel lblNivel;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblVida;
     private javax.swing.JTextField txtAtaque;
     private javax.swing.JTextField txtClasse;
-    private javax.swing.JEditorPane txtImagem;
     private javax.swing.JTextField txtNivel;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtVida;
