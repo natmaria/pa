@@ -6,6 +6,7 @@
 package Niveis;
 import Modelos.*;
 import Modelos.CaixaDeDialogo;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.Random;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ Personagem personagem;
 int ataca;
 int ataque;
 int vidaOriginal;
+int vidaInimigo;
 Inimigo nivel2 = new Inimigo();
 Random gerador = new Random();    
 
@@ -50,6 +52,8 @@ Random gerador = new Random();
         txtAtaquePersonagem = new javax.swing.JTextField();
         txtVidaPersonagem = new javax.swing.JTextField();
         btnQuemAtaca = new javax.swing.JButton();
+        barVidaInimigo = new javax.swing.JProgressBar();
+        barVidaPersonagem = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,6 +89,10 @@ Random gerador = new Random();
             }
         });
 
+        barVidaInimigo.setStringPainted(true);
+
+        barVidaPersonagem.setStringPainted(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,7 +125,12 @@ Random gerador = new Random();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtAtaquePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(txtVidaPersonagem))))
+                            .addComponent(txtVidaPersonagem)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(barVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(barVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -146,9 +159,13 @@ Random gerador = new Random();
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblVidaInimigo)
                                     .addComponent(txtVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(66, 66, 66)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(barVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(barVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addComponent(btnQuemAtaca)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,11 +199,16 @@ Random gerador = new Random();
 private void mostrarInimigo() {
     nivel2.setNome("Inimigo Nível 2");
     nivel2.setNivel(2);
-    nivel2.setVida(100);
+    vidaInimigo=100;
+    nivel2.setVida(vidaInimigo);
     nivel2.setAtaque(gerador.nextInt(60)+1);
     txtNomeInimigo.setText(nivel2.getNome());
     txtAtaqueInimigo.setText(String.valueOf(nivel2.getAtaque()));
     txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
+    barVidaInimigo.setMaximum(vidaInimigo);
+    barVidaInimigo.setMinimum(0);
+    barVidaInimigo.setValue(vidaInimigo);
+    barVidaInimigo.setString(String.valueOf(vidaInimigo));
 }
 
 private void mostrarPersonagem(){
@@ -194,21 +216,40 @@ private void mostrarPersonagem(){
     txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
     txtVidaPersonagem.setText(String.valueOf(personagem.getVida())); 
     vidaOriginal=personagem.getVida();
+    barVidaPersonagem.setMaximum(vidaOriginal);
+    barVidaPersonagem.setMinimum(0);
+    barVidaPersonagem.setValue(vidaOriginal);
+    barVidaPersonagem.setString(String.valueOf(vidaOriginal));
 }
 
 private void resetPersonagemGanhou() {
         txtVidaPersonagem.setText(String.valueOf(vidaOriginal));
         txtAtaquePersonagem.setText(String.valueOf(personagem.getAtaque()));
+        barVidaPersonagem.setMaximum(vidaOriginal);
+        barVidaPersonagem.setMinimum(0);
+        barVidaPersonagem.setValue(vidaOriginal);
+        barVidaPersonagem.setForeground(Color.green);
+        barVidaPersonagem.setString(String.valueOf(vidaOriginal));
 }
 
 private void resetPersonagemPerdeu() {
      personagem.setVida(vidaOriginal);
      txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));
+     barVidaPersonagem.setMaximum(vidaOriginal);
+     barVidaPersonagem.setMinimum(0);
+     barVidaPersonagem.setValue(vidaOriginal);
+     barVidaPersonagem.setForeground(Color.green);
+     barVidaPersonagem.setString(String.valueOf(vidaOriginal));
 }
 
 public void resetInimigo() {
-    nivel2.setVida(100);
-    txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
+    nivel2.setVida(vidaInimigo);
+    txtVidaInimigo.setText(String.valueOf(vidaInimigo));
+    barVidaInimigo.setMaximum(vidaInimigo);
+    barVidaInimigo.setMinimum(0);
+    barVidaInimigo.setForeground(Color.green);
+    barVidaInimigo.setString(String.valueOf(vidaInimigo));
+    barVidaInimigo.setValue(vidaInimigo);
 }
 
 private void ataquePersonagem() {
@@ -218,7 +259,15 @@ private void ataquePersonagem() {
       nivel2.setVida(nivel2.getVida()-ataca);
       CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo perdeu " + ataca + " de vida!", "ATAQUE CRÍTICO", 'i');
         if (nivel2.getVida() >0) {
-           txtVidaInimigo.setText(String.valueOf(nivel2.getVida())); 
+           txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
+           barVidaInimigo.setValue(nivel2.getVida());
+           barVidaInimigo.setString(String.valueOf(nivel2.getVida()));
+            if (barVidaInimigo.getValue() < vidaInimigo/2 ) {
+                barVidaInimigo.setForeground(Color.YELLOW);
+            }
+            if (barVidaInimigo.getValue() < vidaInimigo/3 ) {
+                barVidaInimigo.setForeground(Color.RED);
+            }
         } else {
             voceGanhou();
         }
@@ -227,7 +276,15 @@ private void ataquePersonagem() {
         nivel2.setVida(nivel2.getVida()-ataca);
         CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo perdeu " + ataca + " de vida!", "ATAQUE FRACO", 'i');
         if (nivel2.getVida() > 0) {
-        txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));   
+        txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
+        barVidaInimigo.setValue(nivel2.getVida());
+        barVidaInimigo.setString(String.valueOf(nivel2.getVida()));
+          if (barVidaInimigo.getValue() < vidaInimigo/2 ) {
+                barVidaInimigo.setForeground(Color.YELLOW);
+            }
+            if (barVidaInimigo.getValue() < vidaInimigo/3 ) {
+                barVidaInimigo.setForeground(Color.RED);
+            }
         } else {
         voceGanhou();
         }
@@ -243,6 +300,14 @@ private void ataqueInimigo() {
           CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu " + ataca + " de vida!", "ATAQUE CRÍTICO", 'i');
           if (personagem.getVida() > 0) {
             txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));
+            barVidaPersonagem.setValue(personagem.getVida());
+            barVidaPersonagem.setString(String.valueOf(personagem.getVida()));
+            if (barVidaPersonagem.getValue() < vida/2 ) {
+                barVidaPersonagem.setForeground(Color.YELLOW);
+            }
+            if (barVidaPersonagem.getValue() < vida/3 ) {
+                barVidaPersonagem.setForeground(Color.RED);
+            }
         } else {
             vocePerdeu();
           }
@@ -251,7 +316,15 @@ private void ataqueInimigo() {
             personagem.setVida(personagem.getVida()-ataca);
             CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu " + ataca + " de vida!", "ATAQUE FRACO", 'i');
             if (personagem.getVida() > 0) {
-            txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));   
+            txtVidaPersonagem.setText(String.valueOf(personagem.getVida()));
+            barVidaPersonagem.setValue(personagem.getVida());
+            barVidaPersonagem.setString(String.valueOf(personagem.getVida()));
+            if (barVidaPersonagem.getValue() < vida/2 ) {
+                barVidaPersonagem.setForeground(Color.YELLOW);
+            }
+            if (barVidaPersonagem.getValue() < vida/3 ) {
+                barVidaPersonagem.setForeground(Color.RED);
+            }
         }else {
                 vocePerdeu();
     }
@@ -259,7 +332,9 @@ private void ataqueInimigo() {
 }
 
 public void vocePerdeu() {
-  txtVidaPersonagem.setText(String.valueOf(0)); 
+  txtVidaPersonagem.setText(String.valueOf(0));
+  barVidaPersonagem.setValue(0);
+  barVidaPersonagem.setString(String.valueOf(0));
   boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tentar novamente?", "VOCÊ PERDEU!", 'i');
   if (escolha == true) {
      resetPersonagemPerdeu();
@@ -271,6 +346,8 @@ public void vocePerdeu() {
 
 public void voceGanhou() {
     txtVidaInimigo.setText(String.valueOf(0)); 
+    barVidaInimigo.setValue(0);
+    barVidaInimigo.setString(String.valueOf(0));
     nextNivel();
     boolean escolha = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja tentar o próximo nível?", "PARABÉNS VOCÊ GANHOU", 'i');
     if(escolha == true){
@@ -302,6 +379,8 @@ public void updateAtaque() {
     personagem.setAtaque(personagem.getAtaque()+10);  
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar barVidaInimigo;
+    private javax.swing.JProgressBar barVidaPersonagem;
     private javax.swing.JButton btnQuemAtaca;
     private javax.swing.JLabel lblAtaqueInimigo;
     private javax.swing.JLabel lblAtaqueInimigo2;
