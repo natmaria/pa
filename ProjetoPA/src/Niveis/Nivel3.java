@@ -9,24 +9,23 @@ import Modelos.CaixaDeDialogo;
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.util.Random;
-
 /**
  *
- * @author robsom.mathei
+ * @author Usuario
  */
-public class Nivel2 extends javax.swing.JFrame {
+public class Nivel3 extends javax.swing.JFrame {
 Personagem personagem;
 int ataca;
 int ataque;
 int vidaOriginal;
 int vidaInimigo;
-Inimigo nivel2 = new Inimigo();
-Random gerador = new Random();    
+Inimigo nivel3 = new Inimigo();
+Random gerador = new Random(); 
 
     /**
-     * Creates new form Nivel2
+     * Creates new form Nivel3
      */
-    public Nivel2(Personagem personagem) {
+    public Nivel3(Personagem personagem) {
         initComponents();
         this.personagem=personagem;
     }
@@ -40,46 +39,63 @@ Random gerador = new Random();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNomeInimigo = new javax.swing.JTextField();
+        txtAtaquePersonagem = new javax.swing.JTextField();
+        txtVidaPersonagem = new javax.swing.JTextField();
         txtNomePersonagem = new javax.swing.JTextField();
-        lblAtaqueInimigo = new javax.swing.JLabel();
-        lblVidaInimigo = new javax.swing.JLabel();
+        barVidaPersonagem = new javax.swing.JProgressBar();
         lblAtaqueInimigo2 = new javax.swing.JLabel();
         lblVidaInimigo2 = new javax.swing.JLabel();
         txtAtaqueInimigo = new javax.swing.JTextField();
         txtVidaInimigo = new javax.swing.JTextField();
-        txtAtaquePersonagem = new javax.swing.JTextField();
-        txtVidaPersonagem = new javax.swing.JTextField();
-        btnQuemAtaca = new javax.swing.JButton();
+        txtNomeInimigo = new javax.swing.JTextField();
         barVidaInimigo = new javax.swing.JProgressBar();
-        barVidaPersonagem = new javax.swing.JProgressBar();
+        lblAtaqueInimigo = new javax.swing.JLabel();
+        lblVidaInimigo = new javax.swing.JLabel();
+        txtAtaquePersonagem1 = new javax.swing.JTextField();
+        txtVidaPersonagem1 = new javax.swing.JTextField();
+        txtNomePersonagem1 = new javax.swing.JTextField();
+        barVidaPersonagem1 = new javax.swing.JProgressBar();
+        lblAtaqueInimigo3 = new javax.swing.JLabel();
+        lblVidaInimigo3 = new javax.swing.JLabel();
+        btnQuemAtaca = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
+        txtAtaquePersonagem.setEditable(false);
 
-        txtNomeInimigo.setEditable(false);
+        txtVidaPersonagem.setEditable(false);
 
         txtNomePersonagem.setEditable(false);
 
-        lblAtaqueInimigo.setText("Ataque:");
-
-        lblVidaInimigo.setText("Vida:");
+        barVidaPersonagem.setStringPainted(true);
 
         lblAtaqueInimigo2.setText("Ataque:");
 
         lblVidaInimigo2.setText("Vida:");
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         txtAtaqueInimigo.setEditable(false);
 
         txtVidaInimigo.setEditable(false);
 
-        txtAtaquePersonagem.setEditable(false);
+        txtNomeInimigo.setEditable(false);
 
-        txtVidaPersonagem.setEditable(false);
+        barVidaInimigo.setStringPainted(true);
+
+        lblAtaqueInimigo.setText("Ataque:");
+
+        lblVidaInimigo.setText("Vida:");
+
+        txtAtaquePersonagem1.setEditable(false);
+
+        txtVidaPersonagem1.setEditable(false);
+
+        txtNomePersonagem1.setEditable(false);
+
+        barVidaPersonagem1.setStringPainted(true);
+
+        lblAtaqueInimigo3.setText("Ataque:");
+
+        lblVidaInimigo3.setText("Vida:");
 
         btnQuemAtaca.setText("Quem ataca?");
         btnQuemAtaca.addActionListener(new java.awt.event.ActionListener() {
@@ -88,122 +104,117 @@ Random gerador = new Random();
             }
         });
 
-        barVidaInimigo.setStringPainted(true);
-
-        barVidaPersonagem.setStringPainted(true);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtNomeInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnQuemAtaca, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 21, Short.MAX_VALUE))))
+                        .addGap(11, 11, 11)
+                        .addComponent(txtNomeInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAtaqueInimigo)
                             .addComponent(lblVidaInimigo))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtVidaInimigo, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                            .addComponent(txtAtaqueInimigo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtVidaInimigo)
+                            .addComponent(txtAtaqueInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(barVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNomePersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAtaqueInimigo2)
-                            .addComponent(lblVidaInimigo2))
+                            .addComponent(lblAtaqueInimigo3)
+                            .addComponent(lblVidaInimigo3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAtaquePersonagem, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
-                            .addComponent(txtVidaPersonagem)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(barVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(barVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtAtaquePersonagem1)
+                            .addComponent(txtVidaPersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(barVidaPersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(23, 23, 23)
+                    .addComponent(btnQuemAtaca, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(24, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtAtaquePersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblVidaInimigo2)
-                                .addComponent(txtVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNomePersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblAtaqueInimigo)
-                                    .addComponent(txtAtaqueInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblAtaqueInimigo2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblVidaInimigo)
-                                    .addComponent(txtVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(barVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(barVidaPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(btnQuemAtaca)
-                .addContainerGap(120, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtAtaquePersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(lblVidaInimigo3)
+                                        .addComponent(txtVidaPersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblAtaqueInimigo3)
+                                        .addGap(26, 26, 26)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(barVidaPersonagem1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtNomeInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblAtaqueInimigo)
+                            .addComponent(txtAtaqueInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVidaInimigo)
+                            .addComponent(txtVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(barVidaInimigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(188, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(138, 138, 138)
+                    .addComponent(btnQuemAtaca)
+                    .addContainerGap(139, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        mostrarInimigo();
-        mostrarPersonagem();
-    }//GEN-LAST:event_formWindowOpened
-
     private void btnQuemAtacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuemAtacaActionPerformed
         // TODO add your handling code here:
-                ataca = gerador.nextInt(2);
+        ataca = gerador.nextInt(2);
         try{
             if (ataca==0) {
                 CaixaDeDialogo.obterinstancia().exibirMensagem("Você ataca!", "Ataque!", 'i');
-                    ataquePersonagem();
+                ataquePersonagem();
             } else {
-               CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo ataca!", "Ataque!", 'i');;
-                  ataqueInimigo();
+                CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo ataca!", "Ataque!", 'i');;
+                ataqueInimigo();
             }
         } catch(HeadlessException ex){
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage().toString(),"ERRO",'e');
-        } 
+        }
     }//GEN-LAST:event_btnQuemAtacaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 private void mostrarInimigo() {
-    nivel2.setNome("Inimigo Nível 2");
-    nivel2.setNivel(2);
-    vidaInimigo=120;
-    nivel2.setVida(vidaInimigo);
-    nivel2.setAtaque(gerador.nextInt(60)+1);
-    txtNomeInimigo.setText(nivel2.getNome());
-    txtAtaqueInimigo.setText(String.valueOf(nivel2.getAtaque()));
-    txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
+    nivel3.setNome("Inimigo Nível 3");
+    nivel3.setNivel(2);
+    vidaInimigo=140;
+    nivel3.setVida(vidaInimigo);
+    nivel3.setAtaque(gerador.nextInt(80)+1);
+    txtNomeInimigo.setText(nivel3.getNome());
+    txtAtaqueInimigo.setText(String.valueOf(nivel3.getAtaque()));
+    txtVidaInimigo.setText(String.valueOf(nivel3.getVida()));
     barVidaInimigo.setMaximum(vidaInimigo);
     barVidaInimigo.setMinimum(0);
     barVidaInimigo.setValue(vidaInimigo);
@@ -242,7 +253,7 @@ private void resetPersonagemPerdeu() {
 }
 
 public void resetInimigo() {
-    nivel2.setVida(vidaInimigo);
+    nivel3.setVida(vidaInimigo);
     txtVidaInimigo.setText(String.valueOf(vidaInimigo));
     barVidaInimigo.setMaximum(vidaInimigo);
     barVidaInimigo.setMinimum(0);
@@ -255,12 +266,12 @@ private void ataquePersonagem() {
    int ataque = gerador.nextInt(20)+1;
     if (ataque >12){
       int ataca = personagem.getAtaque()/2;
-      nivel2.setVida(nivel2.getVida()-ataca);
+      nivel3.setVida(nivel3.getVida()-ataca);
       CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo perdeu " + ataca + " de vida!", "ATAQUE CRÍTICO", 'i');
-        if (nivel2.getVida() >0) {
-           txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
-           barVidaInimigo.setValue(nivel2.getVida());
-           barVidaInimigo.setString(String.valueOf(nivel2.getVida()));
+        if (nivel3.getVida() >0) {
+           txtVidaInimigo.setText(String.valueOf(nivel3.getVida()));
+           barVidaInimigo.setValue(nivel3.getVida());
+           barVidaInimigo.setString(String.valueOf(nivel3.getVida()));
             if (barVidaInimigo.getValue() < vidaInimigo/2 ) {
                 barVidaInimigo.setForeground(Color.YELLOW);
             }
@@ -272,12 +283,12 @@ private void ataquePersonagem() {
         }
       }else {
         int ataca = personagem.getAtaque()/3;
-        nivel2.setVida(nivel2.getVida()-ataca);
+        nivel3.setVida(nivel3.getVida()-ataca);
         CaixaDeDialogo.obterinstancia().exibirMensagem("O inimigo perdeu " + ataca + " de vida!", "ATAQUE FRACO", 'i');
-        if (nivel2.getVida() > 0) {
-        txtVidaInimigo.setText(String.valueOf(nivel2.getVida()));
-        barVidaInimigo.setValue(nivel2.getVida());
-        barVidaInimigo.setString(String.valueOf(nivel2.getVida()));
+        if (nivel3.getVida() > 0) {
+        txtVidaInimigo.setText(String.valueOf(nivel3.getVida()));
+        barVidaInimigo.setValue(nivel3.getVida());
+        barVidaInimigo.setString(String.valueOf(nivel3.getVida()));
           if (barVidaInimigo.getValue() < vidaInimigo/2 ) {
                 barVidaInimigo.setForeground(Color.YELLOW);
             }
@@ -294,7 +305,7 @@ private void ataqueInimigo() {
    int ataque = gerador.nextInt(20)+1;
     int vida = personagem.getVida();
         if (ataque >12){
-          int ataca = nivel2.getAtaque()/2;
+          int ataca = nivel3.getAtaque()/2;
           personagem.setVida(personagem.getVida()-ataca);
           CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu " + ataca + " de vida!", "ATAQUE CRÍTICO", 'i');
           if (personagem.getVida() > 0) {
@@ -311,7 +322,7 @@ private void ataqueInimigo() {
             vocePerdeu();
           }
         } else {
-            int ataca = nivel2.getAtaque()/3;
+            int ataca = nivel3.getAtaque()/3;
             personagem.setVida(personagem.getVida()-ataca);
             CaixaDeDialogo.obterinstancia().exibirMensagem("Você perdeu " + ataca + " de vida!", "ATAQUE FRACO", 'i');
             if (personagem.getVida() > 0) {
@@ -377,19 +388,26 @@ public void updateVida() {
 public void updateAtaque() {
     personagem.setAtaque(personagem.getAtaque()+10);  
 }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barVidaInimigo;
     private javax.swing.JProgressBar barVidaPersonagem;
+    private javax.swing.JProgressBar barVidaPersonagem1;
     private javax.swing.JButton btnQuemAtaca;
     private javax.swing.JLabel lblAtaqueInimigo;
     private javax.swing.JLabel lblAtaqueInimigo2;
+    private javax.swing.JLabel lblAtaqueInimigo3;
     private javax.swing.JLabel lblVidaInimigo;
     private javax.swing.JLabel lblVidaInimigo2;
+    private javax.swing.JLabel lblVidaInimigo3;
     private javax.swing.JTextField txtAtaqueInimigo;
     private javax.swing.JTextField txtAtaquePersonagem;
+    private javax.swing.JTextField txtAtaquePersonagem1;
     private javax.swing.JTextField txtNomeInimigo;
     private javax.swing.JTextField txtNomePersonagem;
+    private javax.swing.JTextField txtNomePersonagem1;
     private javax.swing.JTextField txtVidaInimigo;
     private javax.swing.JTextField txtVidaPersonagem;
+    private javax.swing.JTextField txtVidaPersonagem1;
     // End of variables declaration//GEN-END:variables
 }
